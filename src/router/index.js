@@ -1,22 +1,61 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Footer from '@/components/Footer'
 
 Vue.use(VueRouter)
 
+// 路由的懒加载
 const routes = [
+  // 重定向
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: '/home'
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/home',
+    name: 'home', // 命名路由， 可以用于声明式导航传参
+    components: {
+      default: () => import('@/views/home/index.vue'),
+      footer: Footer
+    }
+  },
+  {
+    path: '/kind',
+    name: 'kind', // 命名路由， 可以用于声明式导航传参
+    components: {
+      default: () => import('@/views/kind/index.vue'),
+      footer: Footer
+    }
+  },
+  {
+    path: '/cart',
+    name: 'cart', // 命名路由， 可以用于声明式导航传参
+    components: {
+      default: () => import('@/views/cart/index.vue'),
+      footer: Footer
+    }
+  },
+  {
+    path: '/user',
+    name: 'user', // 命名路由， 可以用于声明式导航传参
+    components: {
+      default: () => import('@/views/user/index.vue'),
+      footer: Footer
+    }
+  },
+  {
+    path: '/detail/:proid',
+    name: 'detail', // 命名路由， 可以用于声明式导航传参
+    components: {
+      default: () => import('@/views/detail/index.vue')
+    }
+  },
+  {
+    path: '/login',
+    name: 'login', // 命名路由， 可以用于声明式导航传参
+    components: {
+      default: () => import('@/views/login/index.vue')
+    }
   }
 ]
 
